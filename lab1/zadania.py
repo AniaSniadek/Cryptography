@@ -92,4 +92,20 @@ def pierwiastek_kwadratowy(b, p):
             result = efektywne_potegowanie(b, (p+1)//4, p)
             return result
 
-print(pierwiastek_kwadratowy(2,15485863))            
+         
+# Zadanie 6
+def pierwsza_Fermat(n):
+    if n == 1:
+        return False
+    elif n == 2 or n == 3:
+        return True
+    elif n > 3:
+        k = 10000
+        while k != 0:
+            a = random.randint(2, n-2)
+            result = efektywne_potegowanie(a, n-1, n)
+            if result != 1:
+                return False
+            k = k - 1
+
+        return True
