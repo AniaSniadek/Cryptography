@@ -1,6 +1,6 @@
 import random
 
-def generator(n,k):
+def generator_Zn(n,k):
     if k > 0:
         if k == 1:
             min_number = 0

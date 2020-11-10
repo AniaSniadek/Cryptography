@@ -1,4 +1,4 @@
-def potegowanie(x, k, n):
+def efektywne_potegowanie(x, k, n):
     y = 1
     binary = list((bin(k)[2])[::-1])
     l = len(binary)
