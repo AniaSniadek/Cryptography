@@ -43,8 +43,10 @@ def euklides(a,n):
 
 def odwrotnosc(n, b):
     u,v,d = euklides(b,n)
-    if u*b % n == 1:
+    if u * b % n == 1:
         return u  
+    else:
+        return v
 
 
 # Zadanie 3:
@@ -100,7 +102,7 @@ def pierwsza_Fermat(n):
     elif n == 2 or n == 3:
         return True
     elif n > 3:
-        k = 100
+        k = 30
         while k != 0:
             a = random.randint(2, n-2)
             result = efektywne_potegowanie(a, n-1, n)
