@@ -46,6 +46,10 @@ print('\n')
 # Odszyfrowywanie wiadomości
 m = lab1.efektywne_potegowanie(int(cipher), int(d), int(n))
 print('m = ' + str(m))
+
+
+print('\n')
+print('------------------------------------------------------------------------------------------------------------')
 print('\n')
 
 
@@ -95,6 +99,6 @@ def faktoryzacjaN(n, e, d):
 
 p,q = faktoryzacjaN(n, e, d)
 print(str(p))
-print('------------------------------------------------------------------------------------------------------------')
+print('\n')
 print(str(q))
 
