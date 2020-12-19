@@ -52,7 +52,7 @@ def odwrotnosc(n, b):
 # Zadanie 3:
 def efektywne_potegowanie(x, k, n):
     y = 1
-    binary = list((bin(k))[::-1])
+    binary = list((bin(int(k)))[::-1])
     binary.pop()
     binary.pop()
     l = len(binary)
