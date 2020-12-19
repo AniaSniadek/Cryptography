@@ -1,0 +1,77 @@
+import lab1
+import random
+
+# Wyróżnik
+def deltaE(A, B, p):
+    return (4 * lab1.efektywne_potegowanie(A, 3, p) + 27 * lab1.efektywne_potegowanie(B, 2, p)) % p
+
+# Równianie krzywej - zwracanie y^2
+def rownanie_krzywej(A, B, p, x):
+    return (lab1.efektywne_potegowanie(x, 3, p) + (A * x) + B) % p
+
+# Sprawdzanie czy liczba jest pierwiastkiem kwadratowym
+def czy_pierwiastek_kwadratowy(x, p):
+    if lab1.efektywne_potegowanie(x, (p-1)/2, p) and lab1.pierwsza_Fermat(p):
+        return True
+    else:
+        return False
+
+# Zadanie 1
+def generowanie_krzywej(p):
+    while True:
+        if lab1.pierwsza_Fermat(p) and p % 4 == 3:
+            A = random.randint(1, p - 1)
+            B = random.randint(1, p - 1)
+
+            delta = deltaE(A, B, p)
+            if delta != 0:
+                break
+    
+    # print('Y^2 = X^3 + ' + str(A) + 'X + ' + str(B) + ' mod ' + str(p))
+    return A, B
+
+
+# Zadanie 2
+def punkt_na_krzywej(A, B, p):
+    delta = deltaE(A, B, p)
+
+    if delta != 0 and p % 4 == 3:
+        while True:
+            x = random.randint(0, p - 1)
+            y_kwadrat = rownanie_krzywej(A, B, p, x)
+
+            if czy_pierwiastek_kwadratowy(y_kwadrat, p):
+                y = lab1.efektywne_potegowanie(y_kwadrat, (p+1)/4, p)
+                break
+        
+        return x,y
+
+
+# Zadanie 3
+def czy_punkt_nalzey(A, B, p, x, y):
+    y_kwadrat = rownanie_krzywej(A, B, p, x)
+    
+    if y_kwadrat == lab1.efektywne_potegowanie(y, 2, p):
+        return True
+    else:
+        return False
+
+
+# Zadanie 4
+def punkt_przeciwny(x, y):
+    return x, -y
+
+
+A=239614427021073265587611886177902927263167863041565491257781227550405368115731464059190159
+B=447169285435982716467332439542997876345372330045685811964291613238129105735899852114277221
+p=1183779584357076950937981497685946292711107412152534481102525547387604378262522402526266939
+x=285113634279465403319996581740169338329454608669814309137990174814243655992779447106132850
+y=598700530906084162596261101440667782569915319623798143751082061599951188013331503150304328
+# Zadanie 1
+# print(generowanie_krzywej(p))   
+# Zadanie 2
+# print(punkt_na_krzywej(A, B, p)) 
+# Zadanie 3
+# print(czy_punkt_nalzey(A, B, p, x, y))
+# Zadanie 4
+# print(punkt_przeciwny(x, y))
