@@ -64,6 +64,12 @@ def punkt_przeciwny(x, y):
 
 # Zadanie 5
 def suma_punktow(A, B, p, x1, y1, x2, y2):
+    # P + 0 = P
+    if x1 == 'e' and y1 == 'e':
+        return x2, y2
+    elif x2 == 'e' and y2 == 'e':
+        return x1, y1
+
     # P + Q = R
     if x1 != x2:
         l = ((y2 - y1) * lab1.odwrotnosc((x2 - x1), p)) % p
@@ -77,6 +83,11 @@ def suma_punktow(A, B, p, x1, y1, x2, y2):
         x3 = (lab1.efektywne_potegowanie(l, 2, p) - 2 * x1) % p
         y3 = (l * (x1 - x3) - y1) % p
         return x3, y3
+
+    # P + -Q = 0
+    if x1 == x2 and y1 == -y2:
+        return 'e','e'
+    
 
 
 
@@ -96,4 +107,6 @@ y=598700530906084162596261101440667782569915319623798143751082061599951188013331
 # Zadanie 5
 print(suma_punktow(2,9,19,4,9,6,3))
 print(suma_punktow(2,9,19,4,9,4,9))
-print(suma_punktow(A, B, p, x, y, x, y))
+print(suma_punktow(2,9,19,4,9,'e','e'))
+print(suma_punktow(2,9,19,4,9,4,-9))
+# print(suma_punktow(A, B, p, x, y, x, y))
