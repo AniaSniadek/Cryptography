@@ -41,7 +41,7 @@ def euklides(a,n):
     v = (d - a*u) // n
     return u,v,d
 
-def odwrotnosc(n, b):
+def odwrotnosc(b, n):
     u,v,d = euklides(b,n)
     if u < 0:
         u += n

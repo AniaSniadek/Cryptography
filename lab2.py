@@ -62,6 +62,24 @@ def punkt_przeciwny(x, y):
     return x, -y
 
 
+# Zadanie 5
+def suma_punktow(A, B, p, x1, y1, x2, y2):
+    # P + Q = R
+    if x1 != x2:
+        l = ((y2 - y1) * lab1.odwrotnosc((x2 - x1), p)) % p
+        x3 = (lab1.efektywne_potegowanie(l, 2, p) - x1 - x2) % p
+        y3 = (l * (x1 - x3) - y1) % p
+        return x3, y3
+
+    # P + P = 2P
+    if x1 == x2 and y1 == y2:
+        l = ((3 * lab1.efektywne_potegowanie(x1, 2, p) + A) * (lab1.odwrotnosc(2 * y1, p))) % p
+        x3 = (lab1.efektywne_potegowanie(l, 2, p) - 2 * x1) % p
+        y3 = (l * (x1 - x3) - y1) % p
+        return x3, y3
+
+
+
 A=239614427021073265587611886177902927263167863041565491257781227550405368115731464059190159
 B=447169285435982716467332439542997876345372330045685811964291613238129105735899852114277221
 p=1183779584357076950937981497685946292711107412152534481102525547387604378262522402526266939
@@ -75,3 +93,7 @@ y=598700530906084162596261101440667782569915319623798143751082061599951188013331
 # print(czy_punkt_nalzey(A, B, p, x, y))
 # Zadanie 4
 # print(punkt_przeciwny(x, y))
+# Zadanie 5
+print(suma_punktow(2,9,19,4,9,6,3))
+print(suma_punktow(2,9,19,4,9,4,9))
+print(suma_punktow(A, B, p, x, y, x, y))
