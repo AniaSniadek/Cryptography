@@ -105,8 +105,8 @@ y=598700530906084162596261101440667782569915319623798143751082061599951188013331
 # Zadanie 4
 # print(punkt_przeciwny(x, y))
 # Zadanie 5
-print(suma_punktow(2,9,19,4,9,6,3))
-print(suma_punktow(2,9,19,4,9,4,9))
-print(suma_punktow(2,9,19,4,9,'e','e'))
-print(suma_punktow(2,9,19,4,9,4,-9))
+# print(suma_punktow(2,9,19,4,9,6,3))
+# print(suma_punktow(2,9,19,4,9,4,9))
+# print(suma_punktow(2,9,19,4,9,'e','e'))
+# print(suma_punktow(2,9,19,4,9,4,-9))
 # print(suma_punktow(A, B, p, x, y, x, y))
