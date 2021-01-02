@@ -57,7 +57,7 @@ def efektywne_potegowanie(x, k, n):
     binary.pop()
     l = len(binary)
     i = l - 1
-
+   
     while i >= 0:
         y = y**2 % n
         if int(binary[i]) == 1:

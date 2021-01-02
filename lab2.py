@@ -11,7 +11,7 @@ def rownanie_krzywej(A, B, p, x):
 
 # Sprawdzanie czy liczba jest pierwiastkiem kwadratowym
 def czy_pierwiastek_kwadratowy(x, p):
-    if lab1.efektywne_potegowanie(x, (p-1)/2, p) and lab1.pierwsza_Fermat(p):
+    if lab1.efektywne_potegowanie(x, (p-1)//2, p) and lab1.pierwsza_Fermat(p):
         return True
     else:
         return False
@@ -39,9 +39,9 @@ def punkt_na_krzywej(A, B, p):
         while True:
             x = random.randint(0, p - 1)
             y_kwadrat = rownanie_krzywej(A, B, p, x)
-
+            
             if czy_pierwiastek_kwadratowy(y_kwadrat, p):
-                y = lab1.efektywne_potegowanie(y_kwadrat, (p+1)/4, p)
+                y = lab1.efektywne_potegowanie(y_kwadrat, (p+1)//4, p)
                 break
         
         return x,y
