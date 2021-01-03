@@ -68,25 +68,25 @@ def kodowanie_na_punkt_na_krzywej(A, B, p, m, n, u):
 
 
 # Zadanie 4
-def szyfrowanie_na_krzywej(pm, A, B, p, px, py, qx, qy):
+def szyfrowanie_na_krzywej(PMx, PMy, A, B, p, px, py, qx, qy):
     y = random.randint(0, oblicz_ord(p))
-    c1 = wielokrotnosc_punktu(A, B, p, y, px, py)
+    c1x, c1y = wielokrotnosc_punktu(A, B, p, y, px, py)
     yq = wielokrotnosc_punktu(A, B, p, y, qx, qy)
-    c2 = lab2.suma_punktow(A, B, p, pm[0], pm[1], yq[0], yq[1])
-    return c1, c2
+    c2x, c2y = lab2.suma_punktow(A, B, p, PMx, PMy, yq[0], yq[1])
+    return c1x, c1y, c2x, c2y
 
 
 # Zadanie 5
-def deszyfrowanie_na_krzywej(c1, c2, A, B, p, x):
-    xc1 = wielokrotnosc_punktu(A, B, p, x, c1[0], c1[1])
-    pmd = lab2.suma_punktow(A, B, p, c2[0], c2[1], xc1[0], -int(xc1[1]))
+def deszyfrowanie_na_krzywej(c1x, c1y, c2x, c2y, A, B, p, x):
+    xc1 = wielokrotnosc_punktu(A, B, p, x, c1x, c1y)
+    pmd = lab2.suma_punktow(A, B, p, c2x, c2y, xc1[0], -int(xc1[1]))
     return pmd
 
 # Zadanie 6
 def dekodowanie_punktu_na_krzywej(A, B, p, x, y, u):
     return (x - 1) // u
 
-m = 73
+m = 300
 n = m + random.randint(0, 1000000)
 u = random.randint(30, 50)
 
@@ -96,12 +96,12 @@ klucz_tajny = [A, B, p, Px, Py, Qx, Qy, x]
 print('Klucz publiczny: ' + str(klucz_publiczny))
 print('Klucz prywatny: ' + str(klucz_tajny))
 print('\n')
-pm = kodowanie_na_punkt_na_krzywej(A, B, p, m, n, u)
-print('pm: ' + str(pm))
+PMx, PMy = kodowanie_na_punkt_na_krzywej(A, B, p, m, n, u)
+print('pm: (' + str(PMx) + ', ' + str(PMy) +')')
 print('\n')
-c1, c2 = szyfrowanie_na_krzywej(pm, A, B, p, Px, Py, Qx, Qy)
-print('c1: ' + str(c1))
-print('c2: ' + str(c2))
+C1x, C1y, C2x, C2y = szyfrowanie_na_krzywej(PMx, PMy, A, B, p, Px, Py, Qx, Qy)
+print('c1: (' + str(C1x) + ', ' + str(C1y) +')')
+print('c2: (' + str(C2x) + ', ' + str(C2y) +')')
 print('\n')
-print('pmd: ' + str(deszyfrowanie_na_krzywej(c1, c2, A, B, p, x)))
-print('m: ' + str(dekodowanie_punktu_na_krzywej(A, B, p, pm[0], pm[1], u)))
+print('pmd: ' + str(deszyfrowanie_na_krzywej(C1x, C1y, C2x, C2y, A, B, p, x)))
+print('m: ' + str(dekodowanie_punktu_na_krzywej(A, B, p, PMx, PMy, u)))
