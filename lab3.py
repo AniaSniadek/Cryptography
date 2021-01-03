@@ -40,17 +40,17 @@ def generowanie_kluczy_ElGamal(k):
 
 # Zadanie 2
 def wielokrotnosc_punktu(A, B, p, n, x, y):
-    Q = [x, y]
-    R = ['e', 'e']
+    xq, yq = x, y
+    xr, yr = 'e', 'e'
     
     while n > 0:
         if n % 2 == 1:
-            R = lab2.suma_punktow(A, B, p, R[0], R[1], Q[0], Q[1])
+            xr, yr = lab2.suma_punktow(A, B, p, xr, yr, xq, yq)
             n = n - 1
-        Q = lab2.suma_punktow(A, B, p, Q[0], Q[1], Q[0], Q[1])
+        xq, yq = lab2.suma_punktow(A, B, p, xq, yq, xq, yq)
         n = n // 2
     
-    return R
+    return xr, yr
 
 
 # Zadanie 3
@@ -93,13 +93,15 @@ u = random.randint(30, 50)
 A, B, p, Px, Py, Qx, Qy, x = generowanie_kluczy_ElGamal(300)
 klucz_publiczny = [A, B, p, Px, Py, Qx, Qy]
 klucz_tajny = [A, B, p, Px, Py, Qx, Qy, x]
-# print(klucz_publiczny)
-# print(klucz_tajny)
-# print(wielokrotnosc_punktu(8,10,19,3,15,3))
+print('Klucz publiczny: ' + str(klucz_publiczny))
+print('Klucz prywatny: ' + str(klucz_tajny))
+print('\n')
 pm = kodowanie_na_punkt_na_krzywej(A, B, p, m, n, u)
-print(pm)
+print('pm: ' + str(pm))
+print('\n')
 c1, c2 = szyfrowanie_na_krzywej(pm, A, B, p, Px, Py, Qx, Qy)
-# print(c1, c2)
-print(deszyfrowanie_na_krzywej(c1, c2, A, B, p, x))
-print(dekodowanie_punktu_na_krzywej(A, B, p, pm[0], pm[1], u))
-
+print('c1: ' + str(c1))
+print('c2: ' + str(c2))
+print('\n')
+print('pmd: ' + str(deszyfrowanie_na_krzywej(c1, c2, A, B, p, x)))
+print('m: ' + str(dekodowanie_punktu_na_krzywej(A, B, p, pm[0], pm[1], u)))

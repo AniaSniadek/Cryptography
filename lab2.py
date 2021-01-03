@@ -72,15 +72,15 @@ def suma_punktow(A, B, p, x1, y1, x2, y2):
 
     # P + Q = R
     if x1 != x2:
-        l = ((y2 - y1) * lab1.odwrotnosc((x2 - x1), p)) % p
-        x3 = (lab1.efektywne_potegowanie(l, 2, p) - x1 - x2) % p
+        l = (((y2 - y1) % p) * lab1.odwrotnosc((x2 - x1) % p, p)) % p
+        x3 = (lab1.efektywne_potegowanie(l, 2, p) - (x1 % p) - (x2 % p)) % p
         y3 = (l * (x1 - x3) - y1) % p
         return x3, y3
 
     # P + P = 2P
     if x1 == x2 and y1 == y2:
-        l = ((3 * lab1.efektywne_potegowanie(x1, 2, p) + A) * (lab1.odwrotnosc(2 * y1, p))) % p
-        x3 = (lab1.efektywne_potegowanie(l, 2, p) - 2 * x1) % p
+        l = ((((3 * lab1.efektywne_potegowanie(x1, 2, p) % p) + A) % p) * (lab1.odwrotnosc(2 * y1, p))) % p
+        x3 = (lab1.efektywne_potegowanie(l, 2, p) - (x1 % p) - (x2 % p)) % p
         y3 = (l * (x1 - x3) - y1) % p
         return x3, y3
 
