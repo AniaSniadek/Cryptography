@@ -43,9 +43,10 @@ def iloczyn(a, b):
     
     return wynik    
 
-# # Zadanie 1
-# print(suma('BA', '53'))
-# # Zadanie 2
-# print(xtime('ba'))
-# # Zadanie 3
-# print(iloczyn('57', '13'))
+
+# Zadanie 1
+print(suma('BA', '53'))
+# Zadanie 2
+print(xtime('ba'))
+# Zadanie 3
+print(iloczyn('57', '13'))
