@@ -22,8 +22,30 @@ def xtime(a):
         return hex(int(binaryA, 2) << 1)[2:]
 
 
+# Zadanie 3
+def iloczyn(a, b):
+    wynik = '0'
+    binaryA = bin(int(a, 16))[2:]
+    length = len(binaryA) - 1
 
-# Zadanie 1
-print(suma('BA', '53'))
-# Zadanie 2
-print(xtime('ba'))
+    for i,v in enumerate(binaryA):
+        if v == '1':
+            tmp = b
+            licznik = length
+            
+            while licznik != 0:
+                tmp = xtime(tmp)
+                licznik = licznik - 1
+            
+            wynik = suma(hex(int(tmp, 16))[2:], wynik)
+
+        length = length - 1    
+    
+    return wynik    
+
+# # Zadanie 1
+# print(suma('BA', '53'))
+# # Zadanie 2
+# print(xtime('ba'))
+# # Zadanie 3
+# print(iloczyn('57', '13'))
