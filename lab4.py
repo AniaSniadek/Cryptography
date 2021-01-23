@@ -9,29 +9,29 @@ def suma(a, b):
 def xtime(a):
     binaryA = bin(int(a, 16))[2:]
     binaryTmp = bin(int("1B", 16))[2:]
-    length = len(binaryA)
+    dlugosc = len(binaryA)
     
-    while length != 8:
+    while dlugosc != 8:
         binaryA = "0" + binaryA
-        length = length + 1
+        dlugosc = dlugosc + 1
     
-    if int(binaryA[0]) == 1:
+    if int(binaryA[0]) == 0:
+        return hex(int(binaryA, 2) << 1)[2:]
+    elif int(binaryA[0]) == 1:
         binaryA = binaryA[1:]
         return hex((int(binaryA, 2) << 1) ^ int(binaryTmp,2))[2:]
-    elif int(binaryA[0]) == 0:
-        return hex(int(binaryA, 2) << 1)[2:]
 
 
 # Zadanie 3
 def iloczyn(a, b):
-    wynik = '0'
     binaryA = bin(int(a, 16))[2:]
-    length = len(binaryA) - 1
+    dlugosc = len(binaryA) - 1
+    wynik = '0'
 
     for i,v in enumerate(binaryA):
         if v == '1':
             tmp = b
-            licznik = length
+            licznik = dlugosc
             
             while licznik != 0:
                 tmp = xtime(tmp)
@@ -39,7 +39,7 @@ def iloczyn(a, b):
             
             wynik = suma(hex(int(tmp, 16))[2:], wynik)
 
-        length = length - 1    
+        dlugosc = dlugosc- 1    
     
     return wynik    
 
