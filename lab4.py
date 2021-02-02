@@ -73,6 +73,6 @@ print(suma('BA', '53'))
 # Zadanie 2
 print(xtime('ba'))
 # Zadanie 3
-print(iloczyn('57', '13'))
+print(iloczyn('ff', 'f4'))
 # Zadanie 4
 print(odwrotnosc('BA'))
