@@ -1,4 +1,3 @@
-
 # Zadanie 1
 def suma(a, b):
     binaryA = bin(int(a, 16))[2:]
